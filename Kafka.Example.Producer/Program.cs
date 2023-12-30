@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.Configure<ProducerConfig>(config =>
 {
     config.ClientId = "Kafka-test-producer";
@@ -55,6 +56,7 @@ app.MapPost("/UserLoggedIn", async (IKafkaProducerService<Null
     var fakeLogins = new Faker<PersonLoggedIn>()
         .RuleFor(c => c.UserName,f=>f.Person.UserName)
         .RuleFor(c => c.LoggedInDate, f => Timestamp.FromDateTime(f.Date.Future(1,DateTime.UtcNow)))
+        .RuleFor(c=>c.UserId,f=>f.IndexFaker)
         .Generate(1000);
 
     foreach (var fakeLogin in fakeLogins)

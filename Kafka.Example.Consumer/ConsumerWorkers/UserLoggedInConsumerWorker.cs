@@ -21,7 +21,7 @@ public class UserLoggedInConsumerWorker:BackgroundService
 
         await _kafkaConsumerService.RegisterConsumer(stoppingToken, "logins-fake-topic", async personLoggedIn =>
         {
-            _logger.LogInformation("Person With UserName {userName} logged On {Date}",personLoggedIn.UserName,personLoggedIn.LoggedInDate.ToDateTime());
+            _logger.LogInformation("Person With UserName {userName} and Id {Id} logged On {Date}",personLoggedIn.UserName,personLoggedIn.UserId,personLoggedIn.LoggedInDate.ToDateTime());
 
             await Task.CompletedTask;
         });
