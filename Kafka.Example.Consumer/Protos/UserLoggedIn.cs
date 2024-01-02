@@ -25,14 +25,14 @@ namespace Kafka.Example.Consumer.Protos {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJVc2VyTG9nZ2VkSW4ucHJvdG8aH2dvb2dsZS9wcm90b2J1Zi90aW1lc3Rh",
-            "bXAucHJvdG8iVAoOUGVyc29uTG9nZ2VkSW4SEAoIVXNlck5hbWUYASABKAkS",
+            "bXAucHJvdG8iZAoOUGVyc29uTG9nZ2VkSW4SEAoIVXNlck5hbWUYASABKAkS",
             "MAoMTG9nZ2VkSW5EYXRlGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVz",
-            "dGFtcEIgqgIdS2Fma2EuRXhhbXBsZS5Db25zdW1lci5Qcm90b3NiBnByb3Rv",
-            "Mw=="));
+            "dGFtcBIOCgZVc2VySWQYAyABKAVCIKoCHUthZmthLkV4YW1wbGUuQ29uc3Vt",
+            "ZXIuUHJvdG9zYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Kafka.Example.Consumer.Protos.PersonLoggedIn), global::Kafka.Example.Consumer.Protos.PersonLoggedIn.Parser, new[]{ "UserName", "LoggedInDate" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Kafka.Example.Consumer.Protos.PersonLoggedIn), global::Kafka.Example.Consumer.Protos.PersonLoggedIn.Parser, new[]{ "UserName", "LoggedInDate", "UserId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,6 +76,7 @@ namespace Kafka.Example.Consumer.Protos {
     public PersonLoggedIn(PersonLoggedIn other) : this() {
       userName_ = other.userName_;
       loggedInDate_ = other.loggedInDate_ != null ? other.loggedInDate_.Clone() : null;
+      userId_ = other.userId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -109,6 +110,18 @@ namespace Kafka.Example.Consumer.Protos {
       }
     }
 
+    /// <summary>Field number for the "UserId" field.</summary>
+    public const int UserIdFieldNumber = 3;
+    private int userId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int UserId {
+      get { return userId_; }
+      set {
+        userId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -126,6 +139,7 @@ namespace Kafka.Example.Consumer.Protos {
       }
       if (UserName != other.UserName) return false;
       if (!object.Equals(LoggedInDate, other.LoggedInDate)) return false;
+      if (UserId != other.UserId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -135,6 +149,7 @@ namespace Kafka.Example.Consumer.Protos {
       int hash = 1;
       if (UserName.Length != 0) hash ^= UserName.GetHashCode();
       if (loggedInDate_ != null) hash ^= LoggedInDate.GetHashCode();
+      if (UserId != 0) hash ^= UserId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -161,6 +176,10 @@ namespace Kafka.Example.Consumer.Protos {
         output.WriteRawTag(18);
         output.WriteMessage(LoggedInDate);
       }
+      if (UserId != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(UserId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -179,6 +198,10 @@ namespace Kafka.Example.Consumer.Protos {
         output.WriteRawTag(18);
         output.WriteMessage(LoggedInDate);
       }
+      if (UserId != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(UserId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -194,6 +217,9 @@ namespace Kafka.Example.Consumer.Protos {
       }
       if (loggedInDate_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(LoggedInDate);
+      }
+      if (UserId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UserId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -215,6 +241,9 @@ namespace Kafka.Example.Consumer.Protos {
           LoggedInDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         LoggedInDate.MergeFrom(other.LoggedInDate);
+      }
+      if (other.UserId != 0) {
+        UserId = other.UserId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -242,6 +271,10 @@ namespace Kafka.Example.Consumer.Protos {
             input.ReadMessage(LoggedInDate);
             break;
           }
+          case 24: {
+            UserId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -266,6 +299,10 @@ namespace Kafka.Example.Consumer.Protos {
               LoggedInDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
             input.ReadMessage(LoggedInDate);
+            break;
+          }
+          case 24: {
+            UserId = input.ReadInt32();
             break;
           }
         }

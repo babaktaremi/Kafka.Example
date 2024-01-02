@@ -27,7 +27,7 @@ public class KafkaConsumerService<TKey, TValue, TValueDeserializer> : IKafkaCons
         while (!cancellationToken.IsCancellationRequested)
         {
 
-            var consumeResult = _consumer.Consume(cancellationToken);
+            var consumeResult = _consumer.Consume(cancellationToken); //Blocking
 
             await handler(consumeResult.Message.Value);
         }
